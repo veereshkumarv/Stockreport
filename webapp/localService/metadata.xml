@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZSCM_CQ_CUSTOM_HUMO_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZSCM_CQ_CUSTOM_HUMOType" sap:label="Stock Report for Handling Unit" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Venum"/>
+                    <PropertyRef Name="Vepos"/>
+                </Key>
+                <Property Name="Venum" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Internal HU number" sap:quickinfo="Internal Handling Unit Number"/>
+                <Property Name="Vepos" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="HU item" sap:quickinfo="Handling Unit Item"/>
+                <Property Name="Hdcount" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Numerator" sap:quickinfo="Internal Counter"/>
+                <Property Name="Packnr" Type="Edm.Guid" sap:label="Packing object" sap:quickinfo="Unique internal packing object number"/>
+                <Property Name="Pobjid" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Packing object" sap:quickinfo="Identification number of packing object"/>
+                <Property Name="Packtyp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Type of pack.obj." sap:quickinfo="Type of packing object"/>
+                <Property Name="Partid" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="External name" sap:quickinfo="External name for packing instruction"/>
+                <Property Name="Height" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Height"/>
+                <Property Name="Width" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Width"/>
+                <Property Name="Length" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Length"/>
+                <Property Name="Iheight" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Height inside" sap:quickinfo="Height of inside dimensions"/>
+                <Property Name="Iwidth" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Width inside" sap:quickinfo="Width of inside measurements"/>
+                <Property Name="Ilength" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Length inside" sap:quickinfo="Length of inside measurements"/>
+                <Property Name="Unitdim" Type="Edm.String" MaxLength="3" sap:label="Unit of dimension" sap:quickinfo="Unit of dimension for length/width/height" sap:semantics="unit-of-measure"/>
+                <Property Name="Sizefix" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Fix measuremts" sap:quickinfo="Measurements fix"/>
+                <Property Name="Totlvol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Total volume" sap:quickinfo="Total volume of handling unit"/>
+                <Property Name="Loadvol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Loading volume" sap:quickinfo="Loading volume of goods to be packed"/>
+                <Property Name="Allovol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allowed load" sap:quickinfo="Allowed loading volume for materials to be packed"/>
+                <Property Name="UnitvolMax" Type="Edm.String" MaxLength="3" sap:label="Volume unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Tarevol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Tare volume" sap:quickinfo="Tare volume of packaging materials"/>
+                <Property Name="Unitvol" Type="Edm.String" MaxLength="3" sap:label="Volume unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Volumfix" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Volume fix"/>
+                <Property Name="Tolevol" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="Excess volume tol." sap:quickinfo="Excess Volume Tolerance of the Handling Unit"/>
+                <Property Name="Indclopa" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Packaging closed" sap:quickinfo="Indicator: packaging closed"/>
+                <Property Name="Totlwei" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Total weight" sap:quickinfo="Total weight of handling unit"/>
+                <Property Name="Loadwei" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Loading Weight" sap:quickinfo="Loading Weight of Goods to Be Packed"/>
+                <Property Name="Allowei" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allowed Load Wt" sap:quickinfo="Allowed Loading Weight"/>
+                <Property Name="UnitweiMax" Type="Edm.String" MaxLength="3" sap:label="Unit of weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Tarewei" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Packaging weight" sap:quickinfo="Tare weight of packaging materials"/>
+                <Property Name="Unitwei" Type="Edm.String" MaxLength="3" sap:label="Unit of weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Weightfix" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Weights fix"/>
+                <Property Name="Tolewei" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="Excess wt tolerance" sap:quickinfo="Excess Weight Tolerance for Handling unit"/>
+                <Property Name="Maxstwe" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allowed Load"/>
+                <Property Name="Stfac" Type="Edm.Int16" sap:label="Stackability factor" sap:quickinfo="Stacking factor"/>
+                <Property Name="Crdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created on"/>
+                <Property Name="Crnam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Person responsible, create"/>
+                <Property Name="Chdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed on" sap:quickinfo="Date of last change"/>
+                <Property Name="Chtim" Type="Edm.Time" Precision="0" sap:label="Changed at" sap:quickinfo="Time last change was made"/>
+                <Property Name="Chnam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Person responsible, change"/>
+                <Property Name="Pobjst" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Packing object status"/>
+                <Property Name="Shiplabel" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="No Shipping Label" sap:quickinfo="Checkbox: Do Not Print External Shipping Label"/>
+                <Property Name="MapacoItem" Type="Edm.Guid" sap:label="LC item number" sap:quickinfo="Item number of load carrier"/>
+                <Property Name="Inddel" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion Indicator"/>
+                <Property Name="Checkprof" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Check profile" sap:quickinfo="Packing status check profile"/>
+                <Property Name="PackkpVegr1" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Handling unit gr. 1" sap:quickinfo="Handling Unit Group 1                     (Freely Definable)"/>
+                <Property Name="PackkpVegr2" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Handling unit gr. 2" sap:quickinfo="Handling Unit Group 2                     (Freely Definable)"/>
+                <Property Name="PackkpVegr3" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Handling unit gr. 3" sap:quickinfo="Handling Unit Group 3                     (Freely Definable)"/>
+                <Property Name="PackkpVegr4" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="HU group 4" sap:quickinfo="Handling Unit Group 4                     (Freely Definable)"/>
+                <Property Name="PackkpVegr5" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="HU group 5" sap:quickinfo="Handling Unit Group 5                     (Freely Definable)"/>
+                <Property Name="PackkpLgnum" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Warehouse" sap:quickinfo="Warehouse Number"/>
+                <Property Name="Stdtm" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Standard Duration" sap:quickinfo="VAS Standard Duration"/>
+                <Property Name="Vtmrt" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Template Rating" sap:quickinfo="VAS Template Rating"/>
+                <Property Name="Exemt" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Execution Method" sap:quickinfo="VAS Execution Method"/>
+                <Property Name="Dsptx" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Text Only" sap:quickinfo="Display Text items only"/>
+                <Property Name="Actsq" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="VAS Template Seq." sap:quickinfo="VAS Template Sequence"/>
+                <Property Name="Hdrwc" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="HeaderTempl.Wrk.Cntr" sap:quickinfo="Use Header Template Work Center for all Resulting VAS Orders"/>
+                <Property Name="Billp" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number 1"/>
+                <Property Name="Shipp" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number 1"/>
+                <Property Name="Vendr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="Purir" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing info rec." sap:quickinfo="Number of Purchasing Info Record"/>
+                <Property Name="Pirtx" Type="Edm.String" MaxLength="40" sap:label="Info short text" sap:quickinfo="Short text for purchasing info record"/>
+                <Property Name="Agrmt" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Agreement" sap:quickinfo="Agreement (various conditions grouped together)"/>
+                <Property Name="Agrtx" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Description of agreement (e.g. sales deal, promotion)"/>
+                <Property Name="Smtnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Tmuom" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Time UoM" sap:quickinfo="Time Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="Chppc" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Charge per Piece"/>
+                <Property Name="Chptm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Charge per Time"/>
+                <Property Name="Chpvp" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Charge per VAS Pkg." sap:quickinfo="Charge Per Complete VAS Package"/>
+                <Property Name="Chpvt" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Charge per Template" sap:quickinfo="Charge per VAS Template"/>
+                <Property Name="Rqscf" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Conf.Subord.Items" sap:quickinfo="Require Separate Confirmation for Each Subordinate Work Item"/>
+                <Property Name="Intlv" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Instruction Control" sap:quickinfo="VAS Template Instruction Control"/>
+                <Property Name="HuType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Handling Unit Type"/>
+                <Property Name="Zz1Stackingpattern" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Stacking Pattern"/>
+                <Property Name="Zz1Alternate" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternate"/>
+                <Property Name="Zz1Heightsetting" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Height Setting"/>
+                <Property Name="Exidv" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Handling Unit" sap:quickinfo="External Handling Unit Identification"/>
+                <Property Name="Exida" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="HU Identfier Type" sap:quickinfo="Type of External Handling Unit Identifier"/>
+                <Property Name="Vstel" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Shipping Point" sap:quickinfo="Shipping Point / Receiving Point"/>
+                <Property Name="Lstel" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Loading Point"/>
+                <Property Name="Brgew" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Total Weight" sap:quickinfo="Total Weight of Handling Unit"/>
+                <Property Name="Ntgew" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Loading Weight" sap:quickinfo="Loading Weight of Handling Unit"/>
+                <Property Name="Magew" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allowed Load Weight" sap:quickinfo="Allowed Loading Weight of a Handling Unit"/>
+                <Property Name="Tarag" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Tare Weight" sap:quickinfo="Tare Weight of Handling Unit"/>
+                <Property Name="Gewei" Type="Edm.String" MaxLength="3" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="Btvol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Total Volume" sap:quickinfo="Total Volume of Handling Unit"/>
+                <Property Name="Ntvol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Loading Volume" sap:quickinfo="Loading Volume of Handling Unit"/>
+                <Property Name="Mavol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allowed Volume" sap:quickinfo="Allowed Loading Volume for Handling Unit"/>
+                <Property Name="Tavol" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Tare Volume" sap:quickinfo="Tare Volume of Handling Unit"/>
+                <Property Name="Voleh" Type="Edm.String" MaxLength="3" sap:label="Volume Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Anzgl" Type="Edm.Int32" sap:label="Similar packg matls" sap:quickinfo="Number of Similar Packaging Materials"/>
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Record Created On"/>
+                <Property Name="Eruhr" Type="Edm.Time" Precision="0" sap:label="Time" sap:quickinfo="Entry time"/>
+                <Property Name="Aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Name of Person Who Changed Object"/>
+                <Property Name="Aedat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On"/>
+                <Property Name="Aezet" Type="Edm.Time" Precision="0" sap:label="Changed at" sap:quickinfo="Time last change was made"/>
+                <Property Name="Sortl" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Search term" sap:quickinfo="Sort field"/>
+                <Property Name="VekpVegr1" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Handling unit gr. 1" sap:quickinfo="Handling Unit Group 1                     (Freely Definable)"/>
+                <Property Name="VekpVegr2" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Handling unit gr. 2" sap:quickinfo="Handling Unit Group 2                     (Freely Definable)"/>
+                <Property Name="VekpVegr3" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Handling unit gr. 3" sap:quickinfo="Handling Unit Group 3                     (Freely Definable)"/>
+                <Property Name="VekpVegr4" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="HU group 4" sap:quickinfo="Handling Unit Group 4                     (Freely Definable)"/>
+                <Property Name="VekpVegr5" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="HU group 5" sap:quickinfo="Handling Unit Group 5                     (Freely Definable)"/>
+                <Property Name="Vhilm" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Packaging Materials"/>
+                <Property Name="Laeng" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Length"/>
+                <Property Name="Breit" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Width"/>
+                <Property Name="Hoehe" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Height"/>
+                <Property Name="Meabm" Type="Edm.String" MaxLength="3" sap:label="Unit of Dimension" sap:quickinfo="Unit of Dimension for Length/Width/Height" sap:semantics="unit-of-measure"/>
+                <Property Name="Erlkz" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Status" sap:quickinfo="Status (at this time without functionality)"/>
+                <Property Name="Gewto" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="Excess wt tolerance" sap:quickinfo="Excess Weight Tolerance for Handling unit"/>
+                <Property Name="Volto" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="Excess volume tol." sap:quickinfo="Excess Volume Tolerance of the Handling Unit"/>
+                <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="VolehMax" Type="Edm.String" MaxLength="3" sap:label="Volume Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="GeweiMax" Type="Edm.String" MaxLength="3" sap:label="Unit of Weight" sap:semantics="unit-of-measure"/>
+                <Property Name="VbelnGen" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Generated delivery" sap:quickinfo="Delivery in Which Packaging Material Is Generated as an Item"/>
+                <Property Name="VekpPosnrGen" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Generated item" sap:quickinfo="Generated delivery item"/>
+                <Property Name="Inhalt" Type="Edm.String" MaxLength="40" sap:label="Content" sap:quickinfo="Description of Handling Unit Content"/>
+                <Property Name="Vhart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Packaging Mat. Type" sap:quickinfo="Packaging Material Type"/>
+                <Property Name="Kappl" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Application" sap:quickinfo="Application for output conditions"/>
+                <Property Name="Kalsm" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Output determ.proc." sap:quickinfo="Output determination procedure"/>
+                <Property Name="Kschl" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Output Type"/>
+                <Property Name="Magrv" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Matl Grp Pack.Matls" sap:quickinfo="Material Group: Packaging Materials"/>
+                <Property Name="VekpWerks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="VekpPstyv" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Item Category" sap:quickinfo="Sales Document Item Category"/>
+                <Property Name="Vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Sales Organization"/>
+                <Property Name="Vtweg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="RefDistCh-Cust/Mat." sap:quickinfo="Reference distrib.channel for cust.and material masters"/>
+                <Property Name="Ladlg" Type="Edm.Decimal" Precision="6" Scale="0" sap:label="LgthLoadingPlatform" sap:quickinfo="Lgth of loading platform in lgth of LdPlat measurement units"/>
+                <Property Name="Ladeh" Type="Edm.String" MaxLength="3" sap:label="Unit of length" sap:quickinfo="Unit of measure to measure the length of loading platform" sap:semantics="unit-of-measure"/>
+                <Property Name="Farzt" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="Travel time" sap:quickinfo="Travel Time"/>
+                <Property Name="Fareh" Type="Edm.String" MaxLength="3" sap:label="Unit of travel time" sap:semantics="unit-of-measure"/>
+                <Property Name="Entfe" Type="Edm.Decimal" Precision="6" Scale="0" sap:label="Distance travelled" sap:quickinfo="Distance Travelled"/>
+                <Property Name="Ehent" Type="Edm.String" MaxLength="3" sap:label="Unit of distance" sap:semantics="unit-of-measure"/>
+                <Property Name="VekpLgort" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location"/>
+                <Property Name="Gewfx" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Weight/Vol. Fixed" sap:quickinfo="Weight and Volume Fixed"/>
+                <Property Name="Veltp" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Pack. Mat. Cat." sap:quickinfo="Packaging Material Category"/>
+                <Property Name="Exidv2" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="HU identification 2" sap:quickinfo="Handling Unit's 2nd External Identification"/>
+                <Property Name="Landt" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ctr/Reg prov. MoT" sap:quickinfo="Country/Region providing means of transport"/>
+                <Property Name="Landf" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Driver's  origin...." sap:quickinfo="Driver's Origin"/>
+                <Property Name="Namef" Type="Edm.String" MaxLength="35" sap:label="Driver" sap:quickinfo="Driver name"/>
+                <Property Name="Nambe" Type="Edm.String" MaxLength="35" sap:label="Alternate Driver" sap:quickinfo="Alternate Driver's Name"/>
+                <Property Name="VhilmKu" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Customer packag.matl" sap:quickinfo="Partner's (Customer's or Vendor's) Packaging Material"/>
+                <Property Name="Vpobj" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Packing Object"/>
+                <Property Name="Vpobjkey" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Object Key" sap:quickinfo="Key for Object to Which the Handling Unit is Assigned"/>
+                <Property Name="Handle" Type="Edm.Guid" sap:label="Handle" sap:quickinfo="Worldwide unique key for VEKP-VENUM"/>
+                <Property Name="Wmsta" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Container Status" sap:quickinfo="WM Status for Container Material"/>
+                <Property Name="VekpLgnum" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Warehouse Number" sap:quickinfo="Warehouse Number/Warehouse Complex"/>
+                <Property Name="Saprl" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="SAP Release"/>
+                <Property Name="Kzgvh" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Closed" sap:quickinfo="Packaging Material is Closed Packaging"/>
+                <Property Name="AdgeDg" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Rel. for dang. goods" sap:quickinfo="Packing Level is Relevant for Dangerous Goods"/>
+                <Property Name="AdgeDgpr" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Print-relevant" sap:quickinfo="Indicator: Packing level is relevant for printing"/>
+                <Property Name="Uevel" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Higher-level HU" sap:quickinfo="Higher-Level Handling Unit"/>
+                <Property Name="Packvorschr" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Packing Instruction"/>
+                <Property Name="PackvorschrSt" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Local packing status" sap:quickinfo="Local packing status for a single HU (without sub HUs)"/>
+                <Property Name="Labeltyp" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="No Shipping Label" sap:quickinfo="Checkbox: Do Not Print External Shipping Label"/>
+                <Property Name="ZulAufl" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Allowed Load"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="HU status" sap:quickinfo="Handling unit status"/>
+                <Property Name="VekpHuLgort" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="HU storage loc." sap:quickinfo="Content is Located at an HU-managed Storage Location"/>
+                <Property Name="HuSystem" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="HU system" sap:quickinfo="HU and IM Stock in Separate Systems"/>
+                <Property Name="SpeHdall" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="On Hold" sap:quickinfo="Inbound delivery header not yet complete (on Hold)"/>
+                <Property Name="SpeVlstk" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Status Decent. Whse" sap:quickinfo="Distribution Status (Decentralized Warehouse Processing)"/>
+                <Property Name="SpeDeldec" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Del.Ind." sap:quickinfo="Delete indicator for the confirmation of deleted HUs"/>
+                <Property Name="SpeIdart01" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Handling Unit ID" sap:quickinfo="Handling Unit Identification Type"/>
+                <Property Name="SpeIdent01" Type="Edm.String" MaxLength="40" sap:label="Alt Hndlng Unit ID" sap:quickinfo="Alternative HU Identification"/>
+                <Property Name="SpeIdart02" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Handling Unit ID" sap:quickinfo="Handling Unit Identification Type"/>
+                <Property Name="SpeIdent02" Type="Edm.String" MaxLength="40" sap:label="Alt Hndlng Unit ID" sap:quickinfo="Alternative HU Identification"/>
+                <Property Name="SpeIdart03" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Handling Unit ID" sap:quickinfo="Handling Unit Identification Type"/>
+                <Property Name="SpeIdent03" Type="Edm.String" MaxLength="40" sap:label="Alt Hndlng Unit ID" sap:quickinfo="Alternative HU Identification"/>
+                <Property Name="SpeIdart04" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Handling Unit ID" sap:quickinfo="Handling Unit Identification Type"/>
+                <Property Name="SpeIdent04" Type="Edm.String" MaxLength="40" sap:label="Alt Hndlng Unit ID" sap:quickinfo="Alternative HU Identification"/>
+                <Property Name="SpeLogpos" Type="Edm.String" MaxLength="2" sap:label="Logical Position" sap:quickinfo="Logical Position of Handling Unit"/>
+                <Property Name="SpeChkCounter" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Check Number" sap:quickinfo="Check number for cross-delivery handling units"/>
+                <Property Name="Uuid" Type="Edm.Guid" sap:label="UUID Raw 16" sap:quickinfo="UUID datatype raw 16"/>
+                <Property Name="VekpDataaging" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data Aging" sap:quickinfo="Data Filter Value for Data Aging"/>
+                <Property Name="PsId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Packaging Spec." sap:quickinfo="Packaging Specification ID"/>
+                <Property Name="PsLevelSeq" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Level Sequence No." sap:quickinfo="Sequence Number of a Level in a Packaging Specification"/>
+                <Property Name="PbEngine" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="UPB Engine" sap:quickinfo="Unified Package Building Engine"/>
+                <Property Name="TmDocId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="TM Document ID"/>
+                <Property Name="TmDocTco" Type="Edm.String" MaxLength="5" sap:label="Ext. BTD Type Code" sap:quickinfo="External Business Transaction Document Type Code"/>
+                <Property Name="TmDocItemId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="TM Item ID" sap:quickinfo="TM Document Item ID"/>
+                <Property Name="HudhrInclEewPs" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Dummy function in length 1" sap:heading=""/>
+                <Property Name="Zz1StocktransferdocHuh" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Stock Transfer Order (Doc)"/>
+                <Property Name="Zz1StocktransferitemHuh" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Stock Transfer Order (Item)"/>
+                <Property Name="Zz1CustomerHuh" Type="Edm.String" MaxLength="10" sap:label="Customer"/>
+                <Property Name="Zz1CustomernamehuHuh" Type="Edm.String" MaxLength="80" sap:label="Customer Name"/>
+                <Property Name="Zz1SealnumberHuh" Type="Edm.String" MaxLength="64" sap:label="HU Seal Number" sap:quickinfo="Seal Number"/>
+                <Property Name="Zz1ContainercounterHuh" Type="Edm.String" MaxLength="20" sap:label="Container Counter"/>
+                <Property Name="VekpCharg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+                <Property Name="Epc1" Type="Edm.String" MaxLength="96" sap:display-format="UpperCase" sap:label="EPC1" sap:quickinfo="Electronic Product Code 1"/>
+                <Property Name="Epc2" Type="Edm.String" MaxLength="96" sap:display-format="UpperCase" sap:label="EPC2" sap:quickinfo="Electronic Product Code 2"/>
+                <Property Name="PackageCat" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Category of Package"/>
+                <Property Name="TranspIndex" Type="Edm.Decimal" Precision="7" Scale="2" sap:label="Transport Index"/>
+                <Property Name="CritSafIndex" Type="Edm.Decimal" Precision="7" Scale="2" sap:label="Crit. Safety Index" sap:quickinfo="Criticality Safety Index"/>
+                <Property Name="FlgDgPackage" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Dangerous Goods Pkg." sap:quickinfo="Dangerous Goods Package"/>
+                <Property Name="DgPackageLevel" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="DG Packaging Level" sap:quickinfo="Level of Dangerous Goods Packaging"/>
+                <Property Name="Packcode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Packaging Code" sap:quickinfo="Actual Packaging Code"/>
+                <Property Name="InstrEnclCat" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Cat. of Encl. Instr." sap:quickinfo="Category of Instruction for Enclosure"/>
+                <Property Name="MatDamagedCl7" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Damaged Material" sap:quickinfo="Damaged Material (Class 7)"/>
+                <Property Name="DoseRateBulk" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Rad Lvl (Unpkd)" sap:quickinfo="Radiation Level (Unpacked)"/>
+                <Property Name="DoseRateBulkU" Type="Edm.String" MaxLength="3" sap:label="Rad Lvl Unit (Unpkd)" sap:quickinfo="Unit of Radiation Level (Unpacked)" sap:semantics="unit-of-measure"/>
+                <Property Name="DoseRatePack" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Radiaton Level Pckd" sap:quickinfo="Radation Level Packed"/>
+                <Property Name="UDoseRatePack" Type="Edm.String" MaxLength="3" sap:label="Unit of Rad.Lvl Pckd" sap:quickinfo="Unit of Radiation Level Packed" sap:semantics="unit-of-measure"/>
+                <Property Name="LeadingLwdg" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Leading DG Regulat." sap:quickinfo="Leading Dangerous Goods Regulation"/>
+                <Property Name="MaxGrossWeight" Type="Edm.Decimal" Precision="8" Scale="2" sap:label="Maximum Gross Mass"/>
+                <Property Name="UMaxGrossWght" Type="Edm.String" MaxLength="3" sap:label="Max. Gross Mass Unit" sap:quickinfo="Unit for Maximum Gross Mass" sap:semantics="unit-of-measure"/>
+                <Property Name="Lyard" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Yard"/>
+                <Property Name="Ylccl" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Location Class"/>
+                <Property Name="Yloct" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Location"/>
+                <Property Name="Stats" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Vehicle Stock Status"/>
+                <Property Name="Prrty" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Vehicle Priority"/>
+                <Property Name="Fwagn" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Forwarding Agent"/>
+                <Property Name="Scacd" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="SCAC" sap:quickinfo="Standard carrier access code"/>
+                <Property Name="Owner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Vehicle Owner"/>
+                <Property Name="Trnpd" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Transponder"/>
+                <Property Name="Sealn1" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sealing Number"/>
+                <Property Name="Sealn2" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sealing Number"/>
+                <Property Name="Sealn3" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sealing Number"/>
+                <Property Name="Sealn4" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sealing Number"/>
+                <Property Name="Sealn5" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sealing Number"/>
+                <Property Name="Blind" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Blocked" sap:quickinfo="Block"/>
+                <Property Name="Rsncd" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Reason Code"/>
+                <Property Name="Rftyp" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Ref. Document Type" sap:quickinfo="Reference Document Type"/>
+                <Property Name="Refer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Reference Document"/>
+                <Property Name="Ptmst" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Planned End Time"/>
+                <Property Name="Atmst" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="Actual Start Time"/>
+                <Property Name="Ydoor" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Door"/>
+                <Property Name="Ystga" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Staging Area"/>
+                <Property Name="Urgfl" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Urgent (XDck Relev.)" sap:quickinfo="Urgent (Relevant for Cross-Docking)"/>
+                <Property Name="Prflg" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Permanent" sap:quickinfo="Permanence of Vehicle in Yard"/>
+                <Property Name="Slflg" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Sealing Required"/>
+                <Property Name="Signi" Type="Edm.String" MaxLength="20" sap:label="Container ID"/>
+                <Property Name="Ltext" Type="Edm.String" MaxLength="40" sap:label="Text"/>
+                <Property Name="Velin" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Item type" sap:quickinfo="Type of Handling-unit Item Content"/>
+                <Property Name="Vbeln" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery"/>
+                <Property Name="Posnr" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Delivery Item"/>
+                <Property Name="Vbtyp" Type="Edm.String" MaxLength="4" sap:label="SD Document Category"/>
+                <Property Name="Unvel" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower-level HU" sap:quickinfo="Lower-level handling unit"/>
+                <Property Name="Vemng" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Packed Quantity" sap:quickinfo="Base Quantity Packed in the Handling Unit Item"/>
+                <Property Name="VemngFlo" Type="Edm.Double" sap:label="Internal field/ Do not use     / LGMNG in float / MUM" sap:heading=""/>
+                <Property Name="Vemeh" Type="Edm.String" MaxLength="3" sap:label="Handling unit UoM" sap:quickinfo="Base Unit of Measure of the Quantity to be Packed (VEMNG)" sap:semantics="unit-of-measure"/>
+                <Property Name="Altme" Type="Edm.String" MaxLength="3" sap:label="Unit of measure" sap:quickinfo="Alternative unit of measure for stock unit of measure" sap:semantics="unit-of-measure"/>
+                <Property Name="Veanz" Type="Edm.Int32" sap:label="No. aux.packg. matls" sap:quickinfo="Number of Auxiliary Packaging Materials in the HU Item"/>
+                <Property Name="Kzbei" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Supplementary Item" sap:quickinfo="Checkbox: Supplementary item"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="VepoCharg" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number"/>
+                <Property Name="VepoWerks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="VepoLgort" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage Location"/>
+                <Property Name="Cuobj" Type="Edm.String" MaxLength="18" sap:display-format="NonNegative" sap:label="Internal object no." sap:quickinfo="Configuration (internal object number)"/>
+                <Property Name="Bestq" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Stock Category" sap:quickinfo="Stock Category in the Warehouse Management System"/>
+                <Property Name="Sobkz" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Special Stock" sap:quickinfo="Special Stock Indicator"/>
+                <Property Name="Sonum" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="Spec.Stock No." sap:quickinfo="Special Stock Number"/>
+                <Property Name="Qplos" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="Inspection Lot" sap:quickinfo="Inspection Lot Number"/>
+                <Property Name="Anzsn" Type="Edm.Int32" sap:label="No.serial numbers" sap:quickinfo="Number of serial numbers"/>
+                <Property Name="Serail" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Serial No. Profile" sap:quickinfo="Serial Number Profile"/>
+                <Property Name="VepoPstyv" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Item Category" sap:quickinfo="Sales Document Item Category"/>
+                <Property Name="VepoPosnrGen" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="Generated item" sap:quickinfo="Generated delivery item"/>
+                <Property Name="PMaterial" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="Partner material" sap:quickinfo="Material number of partner (customer / supplier)"/>
+                <Property Name="Wdatu" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="GR Date" sap:quickinfo="Date of Goods Receipt"/>
+                <Property Name="Vfdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="SLED/BBD" sap:quickinfo="Shelf Life Expiration or Best-Before Date"/>
+                <Property Name="VepoHuLgort" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="HU storage loc." sap:quickinfo="Content is Located at an HU-managed Storage Location"/>
+                <Property Name="Xchar" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="HU assignment" sap:quickinfo="HU Item has a Tentative Assignment"/>
+                <Property Name="SpeIdplate" Type="Edm.String" MaxLength="20" sap:label="HU Content ID" sap:quickinfo="Identification of the HU Content"/>
+                <Property Name="SgtScat" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Stock Segment"/>
+                <Property Name="HandleVepo" Type="Edm.Guid" sap:label="Handle" sap:quickinfo="Worldwide unique key for VEPO"/>
+                <Property Name="VepoDataaging" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data Aging" sap:quickinfo="Data Filter Value for Data Aging"/>
+                <Property Name="xcwmxvemng" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Parallel Quantity"/>
+                <Property Name="xcwmxvemeh" Type="Edm.String" MaxLength="3" sap:label="Parallel UoM" sap:quickinfo="Parallel Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="xcwmxaltme" Type="Edm.String" MaxLength="3" sap:label="Alternative PUoM" sap:quickinfo="Alternative Parallel Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property Name="WrfCharstc1" Type="Edm.String" MaxLength="18" sap:label="Characteristic 1" sap:quickinfo="Characteristic Value 1"/>
+                <Property Name="WrfCharstc2" Type="Edm.String" MaxLength="18" sap:label="Characteristic 2" sap:quickinfo="Characteristic Value 2"/>
+                <Property Name="WrfCharstc3" Type="Edm.String" MaxLength="18" sap:label="Characteristic 3" sap:quickinfo="Characteristic Value 3"/>
+            </EntityType>
+            <EntityContainer Name="ZSCM_CQ_CUSTOM_HUMO_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZSCM_CQ_CUSTOM_HUMO" EntityType="ZSCM_CQ_CUSTOM_HUMO_CDS.ZSCM_CQ_CUSTOM_HUMOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZSCM_CQ_CUSTOM_HUMO_CDS.ZSCM_CQ_CUSTOM_HUMO_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <atom:link rel="self" href="https://vhhhlds4ci.sap.manildra.com.au:44300/sap/opu/odata/sap/ZSCM_CQ_CUSTOM_HUMO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://vhhhlds4ci.sap.manildra.com.au:44300/sap/opu/odata/sap/ZSCM_CQ_CUSTOM_HUMO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
